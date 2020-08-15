@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DynaDarkMods
 @namespace      https://github.com/cannibalox/DynaDarkMods/
-@version        0.0.8
+@version        0.0.9
 @description    a dark theme & tweakd for Dynalist.io
 @author         _ph / www.hpx1.com
 @updateURL      https://raw.githubusercontent.com/cannibalox/DynaDarkMods/master/DynaDarkMods.user.css
@@ -218,8 +218,8 @@ a[title^="Filter @"] {
 .is-mediumFont .Node-self.is-heading2 .Node-contentContainer .node-inline-item,
 .is-mediumFont .Node-self.is-heading2 .Node-contentContainer .node-inline-code,
 .is-mediumFont .Node-self.is-heading2 .Node-contentContainer .node-multiline-code {
-	font-size: 0.7em;
-	line-height: 12px;
+	font-size: 0.75em;
+	line-height: 11px;
 	font-weight: normal;
 }
 .node-inline-item {
@@ -242,8 +242,8 @@ a[title^="Filter @"] {
 }
 /* internal links inline */
 .is-mediumFont .Node-contentContainer .node-inline-item {
-	font-size: 0.6em;
-	line-height: 12px;
+	font-size: 0.67em;
+	line-height: 13px;
 }
 /* code inline */
 .is-mediumFont .Node-contentContainer .node-inline-code {
