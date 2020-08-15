@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DynaDarkMods
 @namespace      https://github.com/cannibalox/DynaDarkMods/
-@version        0.0.9
+@version        0.1.0
 @description    a dark theme & tweakd for Dynalist.io
 @author         _ph / www.hpx1.com
 @updateURL      https://raw.githubusercontent.com/cannibalox/DynaDarkMods/master/DynaDarkMods.user.css
@@ -286,13 +286,39 @@ a[title^="Filter @"] {
 .node-icon {
 	color: #d2d2d2;
 }
-/*=====UI=====*/
+	
+/*===========================*/
+/*=========UI============*/
 .AppHeader {
 	color: #a7a7a7;
-	background-color: #111;
+	background-color: #000;
 	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.8);
-	height: 10px;
-	line-height: 16px;
+	height: 7px;
+	line-height: 7px;
+}
+.is-desktop .AppHeader {
+    height: 21px;
+}
+.header-sync-state {
+    font-size: 12px;
+}	
+.AppHeader-notifications {
+    font-size: 14px;
+    right: 61px;
+    top: 4px;
+    padding: 3px 4px;
+}
+.AppHeader-settings {
+    font-size: 14px;
+    padding: 3px 4px;
+    top: 4px;
+    right: 33px;
+}
+.AppHeader-mainMenu {
+    font-size: 15px;
+    padding: 3px;
+    right: 8px;
+    top: 3px;
 }
 .MobileHeader-mainMenuIcon,
 .MobileHeader-backIcon,
@@ -304,11 +330,32 @@ a[title^="Filter @"] {
 	position: absolute;
 	top: 0;
 }
-/* ---- left sidebar ---*/
+/*====== left sidebar ====================*/
+.is-desktop .Pane-header, .is-desktop .popup-message-banner {
+    color: #cacaca;
+    background: #1e2021;
+	font-weight: 900;
+}
+.is-desktop .LeftPaneContainer, .is-desktop .Pane {
+    background-color: #1e2021;
+}
 .is-desktop .LeftPaneContainer-nav {
 	background: #000;
 	box-shadow: inset 0 0 1px 0px #000;
 }
+	/*----------tab hover----*/	
+.is-desktop .LeftPaneContainer-navItem:hover {
+    background: #2188b4;
+}	
+	/*----------tab active----*/	
+.is-desktop .LeftPaneContainer-navItem.is-active {
+    background: #1e2021;
+}	
+.is-desktop .LeftPaneContainer-navItem {
+    background: #000;
+    color: #cacaca;
+}
+	
 /*-- leftsidebar splitter --*/
 .is-desktop .LeftPaneSlidebarContainer {
 	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
