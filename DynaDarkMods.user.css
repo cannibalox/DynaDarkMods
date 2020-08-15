@@ -35,10 +35,6 @@
 	z-index: 2;
 }
 
-.DocumentContainer {
-	overflow-y: scroll;
-}
-
 .DocumentBreadcrumb {
 	width: inherit;
 	height: 1.2em;
@@ -62,7 +58,6 @@
 
 .Document {
 	position: fixed;
-	overflow-y: scroll;
 	top: 1.2em;
 	height: calc(100% - 2em);
 	max-width: 100% !important;
@@ -330,6 +325,7 @@ a[title^="Filter @"] {
 	position: absolute;
 	top: 0;
 }
+	
 /*====== left sidebar ====================*/
 .is-desktop .Pane-header, .is-desktop .popup-message-banner {
     color: #cacaca;
@@ -370,7 +366,7 @@ a[title^="Filter @"] {
 	visibility: hidden;
 	border-right: 0px;
 }
-/*----*/
+/*====== context menu ======*/
 .ContextMenu {
 	color: #d3d3d3;
 	background: #181818;
@@ -379,6 +375,13 @@ a[title^="Filter @"] {
 }
 .MenuGroup + .MenuGroup {
 	border-top: 1px solid #22353c;
+}
+/*====== floating toolbar ======*/	
+.DocumentTools {
+    position: fixed;
+    top: 8px;
+    z-index: 2;
+    right: 56px;
 }
 /* === backlinks pane ====== */
 .document-backlinks-container {
@@ -393,5 +396,23 @@ a[title^="Filter @"] {
 	margin-bottom: 10px;
 	font-size: 14px;
 	color: #9f82e2;
+}
+/*===== status bar ===== */
+.status-bar {
+    bottom: -10px;
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-end;
+    left: 0;
+    line-height: 16px;
+    max-height: 20px;
+    padding: 0px 40px;
+    position: absolute;
+    user-select: none;
+    width: 100%;
+    z-index: 2;
+	background-color: #000;
+	border-top: 0px solid #444;
+	color: #a7a7a7;
 }
 }
