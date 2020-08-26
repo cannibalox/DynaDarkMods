@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DynaDarkMods
 @namespace      https://github.com/cannibalox/DynaDarkMods/
-@version        0.1.0
+@version        0.5.0
 @description    a dark theme & tweakd for Dynalist.io
 @author         _ph / www.hpx1.com
 @updateURL      https://raw.githubusercontent.com/cannibalox/DynaDarkMods/master/DynaDarkMods.user.css
@@ -10,8 +10,96 @@
 @-moz-document domain("dynalist.io") {
 :root {
 	--nodelinks: #42b0dc;
+	--bg-color: #1e2021;
+	--bg-alt: #000000;
+	--text-accent:#21b8e2;
+	--text-faint:#383838;
+	--isactive: #68cd88;
+	--tags-color: #c0ce26;
+	--text-muted: #777777;
+}
+/* =====ymport fonts====== */	
+/* latin-ext */
+@font-face {
+  font-family: 'Armata';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Armata Regular'), local('Armata-Regular'), url(https://fonts.gstatic.com/s/armata/v11/gokvH63_HV5jQ-ENnTR2c2s.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Armata';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Armata Regular'), local('Armata-Regular'), url(https://fonts.gstatic.com/s/armata/v11/gokvH63_HV5jQ-ENkzR2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* arabic */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cairo Regular'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v7/SLXGc1nY6HkvalIkTpu0xg.woff2) format('woff2');
+  unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cairo Regular'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v7/SLXGc1nY6HkvalIvTpu0xg.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cairo Regular'), local('Cairo-Regular'), url(https://fonts.gstatic.com/s/cairo/v7/SLXGc1nY6HkvalIhTps.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* =========== */
+	
+body {
+    font-family: Armata, Whitney, Roboto Slab, Segoe UI, Roboto, system-ui,"Microsoft YaHei", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+    font-size: 12px;
+}
+/* =========== */
+.AppContainer {
+	background-color: var(--bg-color);
+}
+/* font-family */
+.pane-item-header,
+.DocumentBreadcrumb-item,
+.Node.is-currentRoot > .Node-self .Node-renderedContent,
+.Node.is-currentRoot > .Node-self .Node-content,
+.Node-children .Node-renderedContent,
+.Node-children .Node-content {
+	font-family: Armata, Whitney, Roboto Slab, Segoe UI, Roboto, system-ui;
+	font-size: 12px;
+}
+/*=== top alignment, default top:1px ====*/	
+.normal-view {
+    height: 100%;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+	
+.is-desktop .Document {
+    border-radius: 10px;
+    margin: -40px auto 50px auto;
+    margin-right: auto;
+    margin-left: auto;
+    width: calc(100% - 20px);
+}
 /*==== hover and selected node ====*/
 .Node-content:hover,
 .Node-renderedContent:hover,
@@ -27,45 +115,73 @@
 	background: rgba(0, 0, 0, .3) !important;
 	opacity: 1;
 }
-
-/*always make breadcrumb list visible even when scrolling*/
-.DocumentTools {
-	position: fixed;
-	top: 30px;
-	z-index: 2;
+/*==== breadcrumb alignment====*/
+.DocumentBreadcrumb-item {
+    cursor: pointer;
+    display: inline-block;
+    max-width: 150px;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 9px;
 }
-
+/* ===== breadcrumb =======*/	
+/*=== sticky breadcrumb ===*/
 .DocumentBreadcrumb {
-	width: inherit;
-	height: 1.2em;
-	position: fixed;
-	top: 5px;
-	left: 0;
-	z-index: 1;
-	margin: 0;
-	padding-top: 0px;
+	height: 3.5em;
+	position: sticky;
+	top: -20px;
+	z-index: 100;
+	border-bottom: 1px solid var(--text-faint);
+	background-color:var(--bg-color);
+	margin: 0 auto;
+    min-height: 18px;
+    padding: 18px 0 0px 0px;
+    width: calc(100% - 40px);
 }
+/*=== floating toolbar====*/
+.DocumentTools {
+    position: absolute;
+    top: -40px;
+    right: 26px;
+    z-index: 400;
+}
+.DocumentTools-overlay {
+    background-color: rgba(30,32,33,0.7);
+    box-shadow: 0 0 0px 0px #181818;
+}
+.DocumentTools-overlay {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    height: 26px;
+    width: 70px;
+    border-radius: 0px;
+}
+.DocumentSearch-icon:hover, .DocumentTools-filterView:hover {
+	color:var(--text-accent);
+	}
 
-.is-mobile .DocumentBreadcrumb-item {
-	position: relative;
-	top: -1em;
+.DocumentSearch-icon {
+    background-size: 17px;
+    position: absolute;
+    top: -7px;
+    right: 36px;
+    font-size: 15px;
 }
-
-.is-mobile .DocumentBreadcrumb-delimiter {
-	position: relative;
-	top: -1em;
+.DocumentTools-filterView {
+    position: absolute;
+    top: -7px;
+    right: 0;
+    font-size: 18px;
 }
-
-.Document {
-	position: fixed;
-	top: 1.2em;
-	height: calc(100% - 2em);
-	max-width: 100% !important;
-}
-
-.is-mobile .Document {
-	top: 2em;
-}
+.DocumentTools-search {
+    display: none;
+    position: absolute;
+    top: 50px; /* 1 */
+    right: 0;
+}	
 
 /* ======resize images with #q #h tags===== */
 .node-displayed-image[src$="#h"] {
@@ -81,20 +197,7 @@
 .node-link {
 	color: var(--nodelinks);
 }
-/* =========== */
-.AppContainer {
-	background-color: #1e2021;
-}
-/* font-family */
-.pane-item-header,
-.DocumentBreadcrumb-item,
-.Node.is-currentRoot > .Node-self .Node-renderedContent,
-.Node.is-currentRoot > .Node-self .Node-content,
-.Node-children .Node-renderedContent,
-.Node-children .Node-content {
-	font-family: Armata, Whitney, Roboto Slab, Segoe UI, Roboto, "????", "????", system-ui;
-	font-size: 12px;
-}
+
 /* item */
 .Node-children .Node-outer .Node {
 	/* 	padding: .16em 0; */
@@ -189,13 +292,12 @@ display: inline-block;
 	font-size: 10px;
 	font-weight: 100;
 	border: none;
-	color: #8ce381;
+	color: var(--tags-color);
 	background-color: transparent !important;
 	padding: 0px 8px 0px 0px;
 	text-decoration: none;
 	/* float: right; */
 }
-
 
 a[title^="Filter @"] {
 	visibility: visible;
@@ -217,9 +319,18 @@ a[title^="Filter @"] {
 	line-height: 11px;
 	font-weight: normal;
 }
+/* internal links inline */
 .node-inline-item {
-	border: 1px solid #47b4de;
-	color: #72c0de;
+	border: 0px solid #47b4de;
+	color: #4ee67d;	
+}
+.is-whitney .node-inline-item, .is-whitney .node-inline-code {
+    margin-top: -2px;
+}
+.is-mediumFont .Node-contentContainer .node-inline-item {
+	font-size: 1em;
+	line-height: 13px;
+	background-color: rgba(0,0,0,0);
 }
 .is-mediumFont .Node-noteContainer .node-inline-item {
 	font-size: 0.6em;
@@ -234,11 +345,6 @@ a[title^="Filter @"] {
 .is-mediumFont .Node-noteContainer .node-multiline-code {
 	font-size: 0.9em;
 	line-height: 18px;
-}
-/* internal links inline */
-.is-mediumFont .Node-contentContainer .node-inline-item {
-	font-size: 0.67em;
-	line-height: 13px;
 }
 /* code inline */
 .is-mediumFont .Node-contentContainer .node-inline-code {
@@ -262,17 +368,18 @@ a[title^="Filter @"] {
 }
 /* == node backlink counter ====*/
 .node-backlink-counter {
-	background-color: #4a69bf;
-	color: #c2e6c9;
-	border-radius: 1px;
+	background-color: #32a656;
+	color: #f1f1f1;
+	border-radius: 8px;
 	cursor: pointer;
 	display: inline-block;
 	float: right;
 	font-size: 8px;
 	font-weight: bold;
-	height: 17px;
-	line-height: 17px;
+	height: 16px;
+	line-height: 16px;
 	margin-left: -18px;
+	margin-top: 4px;
 	text-align: center;
 	width: 14px;
 	position: relative;
@@ -281,7 +388,16 @@ a[title^="Filter @"] {
 .node-icon {
 	color: #d2d2d2;
 }
-	
+/*=== backlinks pane/ item is refd in ====*/	
+.is-mediumFont .Node-contentContainer {
+    font-size: 14px;
+}	
+.u-use-pref-font {
+    font-family: Cairo;
+}
+.is-mediumFont .node-line {
+    line-height: 31px;
+}
 /*===========================*/
 /*=========UI============*/
 .AppHeader {
@@ -325,19 +441,60 @@ a[title^="Filter @"] {
 	position: absolute;
 	top: 0;
 }
-	
+.MobileHeader-option > svg {
+	width:12px;
+	height:12px;
+	margin-top: -2px;
+}
 /*====== left sidebar ====================*/
-.is-desktop .Pane-header, .is-desktop .popup-message-banner {
-    color: #cacaca;
-    background: #1e2021;
-	font-weight: 900;
-}
-.is-desktop .LeftPaneContainer, .is-desktop .Pane {
-    background-color: #1e2021;
-}
+	
+/*=== tabs icons ===*/
 .is-desktop .LeftPaneContainer-nav {
+    position: absolute;
+    padding-top: 0px;
+    left: 6px;
+    width: 28px;
 	background: #000;
 	box-shadow: inset 0 0 1px 0px #000;
+}
+.is-desktop .LeftPaneContainer-nav {
+    position: absolute;
+    padding-top: 0px;
+    left: 0px;
+    width: 28px;
+    background: #000;
+    box-shadow: inset 0 0 1px 0px #000;
+}
+.is-desktop .LeftPaneContainer-navItem {
+    font: 13px/19px "Whitney", sans-serif;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    padding: 2px 1px 8px 0px;
+    position: relative;
+    margin-bottom: 4px;
+}
+/*=== sidebar size ===*/
+.is-desktop .LeftPaneContainer-panes {
+    position: absolute;
+    top: -1px;
+    right: 0px;
+	left:32px;
+    width: calc(100% - 32px);
+    height: 100%;
+}	
+.Pane-content {
+    height: calc(100% - 41px);
+}
+/*=== sidebar header ===*/
+.is-desktop .Pane-header, .is-desktop .popup-message-banner {
+    color: var(--text-accent);
+    background: var(--bg-color);
+	font-weight: bolder;
+}
+
+.is-desktop .LeftPaneContainer, .is-desktop .Pane {
+    background-color: var(--bg-color);
 }
 	/*----------tab hover----*/	
 .is-desktop .LeftPaneContainer-navItem:hover {
@@ -345,7 +502,8 @@ a[title^="Filter @"] {
 }	
 	/*----------tab active----*/	
 .is-desktop .LeftPaneContainer-navItem.is-active {
-    background: #1e2021;
+    background: var(--bg-color);
+	color: var(--isactive);
 }	
 .is-desktop .LeftPaneContainer-navItem {
     background: #000;
@@ -366,6 +524,35 @@ a[title^="Filter @"] {
 	visibility: hidden;
 	border-right: 0px;
 }
+/*====== header ======*/
+.CopyDocumentButton {
+    position: absolute;
+    left: 15px;
+    bottom: 1px;
+}
+.ReturnToOwnDynalist {
+    position: absolute;
+    bottom: 2px;
+    padding: 3px 10px 0 10px;
+    right: 40px;
+    text-decoration: none;
+}
+.AnonymousSignupCallToAction-signupButton, .ReturnToOwnDynalist, .CopyDocumentButton {
+    display: inline-block;
+    font-size: 10px;
+    height: 16px;
+    line-height: 9px;
+}
+.header-sync-state.mod-syncing {
+    background-image: url('../img/app/loader.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 28px;
+    position: relative;
+    top: 8px;
+    height: 29px;
+    width: 40px;
+}
 /*====== context menu ======*/
 .ContextMenu {
 	color: #d3d3d3;
@@ -376,13 +563,7 @@ a[title^="Filter @"] {
 .MenuGroup + .MenuGroup {
 	border-top: 1px solid #22353c;
 }
-/*====== floating toolbar ======*/	
-.DocumentTools {
-    position: fixed;
-    top: 8px;
-    z-index: 2;
-    right: 56px;
-}
+
 /* === backlinks pane ====== */
 .document-backlinks-container {
 	background-color: #222728;
@@ -399,7 +580,7 @@ a[title^="Filter @"] {
 }
 /*===== status bar ===== */
 .status-bar {
-    bottom: -10px;
+    bottom: -11px;
     display: flex;
     font-size: 12px;
     justify-content: flex-end;
@@ -414,5 +595,64 @@ a[title^="Filter @"] {
 	background-color: #000;
 	border-top: 0px solid #444;
 	color: #a7a7a7;
+}
+/*===== node hover cons menu left ===== */
+.node-hover {
+    float: left;
+    width: 85px;
+	/*right:20px;*/
+    text-align: right;
+    vertical-align: top;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}	
+.Node-self:hover .node-menu-icons-container {
+    display: inline-block;
+}
+.node-icon {
+    font-family: "IcoMoon", sans-serif;
+    cursor: default;
+    display: inline-block;
+    padding: 0 5px;
+    position: relative;
+    vertical-align: middle;
+}
+.node-menu-icons-container {
+    display: none;
+    font-size: 15px;
+    vertical-align: middle;
+}
+/*===== search popup ===== */	
+.is-desktop .full-screen-prompt-input {
+    font-size: 14px;
+}
+.finder-result {
+    cursor: pointer;
+    min-height: 16px;
+    padding: 0px 10px;
+}
+.finder-results, .finder-empty-state {
+    font-size: 16px;
+    width: 100%;
+    margin: 0;
+}
+/*===== search page ====== */
+.search-ui-container, .search-ui-document-title-icon, .search-ui-document-title {
+    background-color: var(--bg-color);
+}
+.flat-search-breadcrumb {
+    margin-left: -10px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.flat-search-breadcrumb-item, .flat-search-breadcrumb-delimiter {
+    color: var(--text-muted);
+	font-size: 12px;
+}
+.is-mediumFont .node-line {
+    line-height: 26px;
 }
 }
